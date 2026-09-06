@@ -1,0 +1,1683 @@
+BUILD A COMPLETE PROFESSIONAL WEB APPLICATION
+
+PROJECT NAME:
+
+SOMALI DISABILITY DATA ENTRY
+
+============================================================
+1. PROJECT OVERVIEW
+============================================================
+
+Build a complete, professional, secure, responsive web-based
+Disability Data Entry and Management System called:
+
+"SOMALI DISABILITY DATA ENTRY"
+
+The system is designed to digitally register and manage
+disability-related information for up to 200 people.
+
+This system replaces a manual Excel-based data-entry process.
+
+The application must be a REAL working application, not a visual
+prototype or fake demo.
+
+All data must be stored persistently in a real database.
+
+The system must work on:
+
+- Desktop
+- Laptop
+- Tablet
+- Android
+- iPhone
+
+The UI must automatically adapt to different screen sizes.
+
+============================================================
+2. MAIN OBJECTIVE
+============================================================
+
+The administrator must be able to:
+
+- Login securely
+- Register a person
+- Store their information
+- View all registered people
+- Search records
+- Filter records
+- View individual records
+- Edit records
+- Delete records
+- Export data to Excel
+- Import existing Excel data
+- Backup data
+- Backup Excel files to Google Drive
+- Restore/import previous data
+- View statistics
+- Manage administrator account
+- Change username
+- Change password
+- Logout securely
+
+Maximum capacity:
+
+200 PEOPLE
+
+============================================================
+3. TECHNOLOGY
+============================================================
+
+Use a modern production-ready web architecture.
+
+Preferred technology:
+
+Frontend:
+- React
+- TypeScript
+- Tailwind CSS
+
+Backend / Database:
+- Firebase
+- Firebase Authentication
+- Cloud Firestore
+
+Excel:
+- XLSX library or equivalent reliable Excel library
+
+Google Drive:
+- Google Drive API
+- OAuth authentication where required
+
+Use clean component-based architecture.
+
+Do NOT build the whole project in one file.
+
+Organize the project professionally.
+
+Suggested structure:
+
+src/
+  components/
+  pages/
+  layouts/
+  services/
+  hooks/
+  utils/
+  types/
+  firebase/
+  features/
+    authentication/
+    dashboard/
+    people/
+    excel/
+    backup/
+    settings/
+
+============================================================
+4. AUTHENTICATION
+============================================================
+
+Create a secure Admin Login system.
+
+Login page:
+
+SOMALI DISABILITY DATA ENTRY
+
+Username
+Password
+
+[ Sign In ]
+
+Include:
+
+Show Password / Hide Password
+
+If credentials are incorrect:
+
+"Invalid username or password."
+
+Do not reveal whether the username or password was incorrect.
+
+Authentication must be REAL.
+
+Do NOT create:
+
+username === "admin"
+password === "1234"
+
+Do NOT hardcode credentials.
+
+Do NOT use localStorage as authentication.
+
+Do NOT store plaintext passwords.
+
+Use a secure authentication provider.
+
+If Firebase Authentication internally requires an email address,
+implement a secure username-to-authentication mapping without
+exposing credentials.
+
+============================================================
+5. FIRST ADMIN SETUP
+============================================================
+
+If no administrator account exists, provide:
+
+CREATE ADMINISTRATOR ACCOUNT
+
+Fields:
+
+Username
+Password
+Confirm Password
+
+[ Create Account ]
+
+Requirements:
+
+- Username required
+- Password required
+- Confirm password must match
+- Password must meet security requirements
+- Username must be unique
+
+After successful account creation:
+
+Redirect to Login.
+
+Do not store plaintext passwords in Firestore.
+
+============================================================
+6. ADMIN SETTINGS
+============================================================
+
+Create:
+
+SETTINGS
+
+Inside Settings create:
+
+ADMIN ACCOUNT
+
+Current Username
+
+[ Change Username ]
+
+[ Change Password ]
+
+[ Logout ]
+
+------------------------------------------------------------
+
+CHANGE USERNAME
+
+Fields:
+
+Current Password
+New Username
+Confirm New Username
+
+Button:
+
+Update Username
+
+Require authentication.
+
+Require current password.
+
+After success:
+
+"Username updated successfully."
+
+------------------------------------------------------------
+
+CHANGE PASSWORD
+
+Fields:
+
+Current Password
+New Password
+Confirm New Password
+
+Button:
+
+Change Password
+
+Require current password verification.
+
+Do not store passwords in plaintext.
+
+After success:
+
+"Password changed successfully."
+
+============================================================
+7. DATABASE SECURITY
+============================================================
+
+Use Firebase Authentication and Firestore Security Rules.
+
+Unauthenticated users must NOT be able to:
+
+- Read records
+- Create records
+- Edit records
+- Delete records
+- Import records
+- Access settings
+- Access backup functions
+
+Only authenticated administrators can access the application.
+
+Do not expose:
+
+- API secrets
+- passwords
+- private keys
+- authentication credentials
+
+in frontend code.
+
+============================================================
+8. MAIN DATABASE
+============================================================
+
+Use Cloud Firestore as the primary database.
+
+Collection:
+
+people
+
+Each person should contain:
+
+internalId
+no
+name
+gender
+age
+maritalStatus
+nationality
+phone
+address
+city
+education
+disabilityType
+causeOfDisability
+amputeeBodyStatus
+handSide
+legSide
+notes
+createdAt
+updatedAt
+createdBy
+updatedBy
+
+Use server timestamps where appropriate.
+
+IMPORTANT:
+
+Firestore is the PRIMARY DATABASE.
+
+Excel is only used for:
+
+- Import
+- Export
+- Backup
+
+Do NOT use Excel as the primary database.
+
+Do NOT use localStorage as the primary database.
+
+Do NOT use temporary in-memory data.
+
+============================================================
+9. EXACT PERSON DATA FIELDS
+============================================================
+
+The registration system must contain these fields:
+
+1. No.
+2. Name
+3. Gender
+4. Age
+5. Marital Status
+6. Nationality
+7. Phone
+8. Address
+9. City
+10. Education
+11. Disability Type
+12. Cause of Disability
+13. Amputee / Body Status
+14. Hand Side
+15. Leg Side
+16. Notes
+
+These are the official data-entry fields.
+
+Do not remove them.
+
+Do not replace them with unrelated fields.
+
+============================================================
+10. NO. FIELD
+============================================================
+
+"No." must be automatically generated.
+
+Use:
+
+1
+2
+3
+...
+200
+
+The administrator must not manually type the number.
+
+The visible number must be unique.
+
+Also create an internal database ID.
+
+If a record is deleted, do not automatically change the numbers
+of existing records.
+
+============================================================
+11. NAME
+============================================================
+
+Field:
+
+Name
+
+Required.
+
+Text input.
+
+Allow multiple words.
+
+Example:
+
+Ahmed Mohamed Ali
+
+============================================================
+12. GENDER
+============================================================
+
+Field:
+
+Gender
+
+Dropdown.
+
+Options:
+
+- Male
+- Female
+- Other
+
+============================================================
+13. AGE
+============================================================
+
+Field:
+
+Age
+
+Numeric input.
+
+Required.
+
+Do not allow negative numbers.
+
+Use reasonable age validation.
+
+============================================================
+14. MARITAL STATUS
+============================================================
+
+Field:
+
+Marital Status
+
+Dropdown.
+
+Options:
+
+- Single
+- Married
+- Divorced
+- Widowed
+- Separated
+
+============================================================
+15. NATIONALITY
+============================================================
+
+Field:
+
+Nationality
+
+Text input or searchable select.
+
+Required.
+
+Allow:
+
+Somali
+
+and other nationalities if necessary.
+
+Do not restrict the system to only one nationality.
+
+============================================================
+16. PHONE
+============================================================
+
+Field:
+
+Phone
+
+Use tel/text input.
+
+Required.
+
+Allow:
+
+- Somali phone numbers
+- International phone formats
+
+Do not reject valid international formats unnecessarily.
+
+============================================================
+17. ADDRESS
+============================================================
+
+Field:
+
+Address
+
+Text input.
+
+Required.
+
+Allow normal address descriptions.
+
+============================================================
+18. CITY
+============================================================
+
+Field:
+
+City
+
+Use searchable dropdown.
+
+Include major Somali cities.
+
+Also provide:
+
+Other
+
+The administrator must be able to select "Other" when necessary.
+
+============================================================
+19. EDUCATION
+============================================================
+
+Field:
+
+Education
+
+Dropdown.
+
+Options:
+
+- No Formal Education
+- Primary
+- Secondary
+- Diploma
+- Bachelor's Degree
+- Master's Degree
+- PhD
+- Vocational/Technical
+- Other
+
+============================================================
+20. DISABILITY TYPE
+============================================================
+
+Field:
+
+Disability Type
+
+Dropdown.
+
+Options:
+
+- Physical
+- Visual
+- Hearing
+- Intellectual
+- Psychosocial
+- Multiple
+- Other
+
+============================================================
+21. CAUSE OF DISABILITY
+============================================================
+
+Field:
+
+Cause of Disability
+
+Dropdown.
+
+Options:
+
+- Natural/Congenital
+- Accident
+- Landmine
+- Explosion
+- Bullet/Gunshot
+- Other/Unknown
+
+============================================================
+22. AMPUTEE / BODY STATUS
+============================================================
+
+Field:
+
+Amputee / Body Status
+
+Dropdown.
+
+Options:
+
+- No Amputation
+- Double Hand
+- Double Leg
+- Single Hand Right
+- Single Hand Left
+- Single Leg Right
+- Single Leg Left
+- One Hand + One Leg
+
+============================================================
+23. HAND SIDE
+============================================================
+
+Field:
+
+Hand Side
+
+Options:
+
+- None
+- Right
+- Left
+- Both
+
+============================================================
+24. LEG SIDE
+============================================================
+
+Field:
+
+Leg Side
+
+Options:
+
+- None
+- Right
+- Left
+- Both
+
+============================================================
+25. NOTES
+============================================================
+
+Field:
+
+Notes
+
+Use multiline textarea.
+
+Optional.
+
+Allow additional information.
+
+============================================================
+26. INTELLIGENT BODY STATUS LOGIC
+============================================================
+
+Use intelligent behavior between:
+
+Amputee / Body Status
+Hand Side
+Leg Side
+
+Examples:
+
+No Amputation
+→ Hand Side = None
+→ Leg Side = None
+
+Single Hand Right
+→ Hand Side = Right
+
+Single Hand Left
+→ Hand Side = Left
+
+Double Hand
+→ Hand Side = Both
+
+Single Leg Right
+→ Leg Side = Right
+
+Single Leg Left
+→ Leg Side = Left
+
+Double Leg
+→ Leg Side = Both
+
+One Hand + One Leg
+→ Allow administrator to specify the affected hand and leg.
+
+Do not make irreversible assumptions.
+
+The administrator must be able to correct selections.
+
+============================================================
+27. REGISTRATION FORM
+============================================================
+
+Create a professional:
+
+REGISTER PERSON
+
+page.
+
+Organize the form into sections.
+
+PERSON INFORMATION
+
+Name
+Gender
+Age
+Marital Status
+Nationality
+Phone
+Address
+City
+Education
+
+DISABILITY INFORMATION
+
+Disability Type
+Cause of Disability
+Amputee / Body Status
+Hand Side
+Leg Side
+
+ADDITIONAL INFORMATION
+
+Notes
+
+Buttons:
+
+Cancel
+Save Record
+
+Use clear validation messages.
+
+============================================================
+28. 200 PERSON LIMIT
+============================================================
+
+Maximum records:
+
+200
+
+Dashboard:
+
+Total Capacity: 200
+Registered: X
+Remaining: X
+
+Formula:
+
+Remaining = 200 - Registered
+
+When:
+
+200 / 200
+
+prevent new registration.
+
+Show:
+
+"Registration capacity reached. The system currently contains
+200 registered people."
+
+If a record is deleted:
+
+capacity becomes available again.
+
+============================================================
+29. DASHBOARD
+============================================================
+
+Create a professional dashboard.
+
+Display:
+
+TOTAL CAPACITY
+200
+
+REGISTERED PEOPLE
+X
+
+REMAINING
+X
+
+MALE
+X
+
+FEMALE
+X
+
+OTHER
+X
+
+Also display statistics based ONLY on real database records.
+
+Charts:
+
+Disability Type
+
+Physical
+Visual
+Hearing
+Intellectual
+Psychosocial
+Multiple
+Other
+
+Cause of Disability
+
+Natural/Congenital
+Accident
+Landmine
+Explosion
+Bullet/Gunshot
+Other/Unknown
+
+Education
+
+Show distribution.
+
+Gender distribution.
+
+Amputee / Body Status distribution.
+
+Do NOT use fake statistics.
+
+============================================================
+30. REGISTERED PEOPLE
+============================================================
+
+Create:
+
+REGISTERED PEOPLE
+
+table.
+
+Columns:
+
+No.
+Name
+Gender
+Age
+Marital Status
+Nationality
+Phone
+Address
+City
+Education
+Disability Type
+Cause of Disability
+Amputee / Body Status
+Hand Side
+Leg Side
+Notes
+Actions
+
+Actions:
+
+View
+Edit
+Delete
+
+If the table is too wide on mobile:
+
+Use horizontal scrolling or responsive cards.
+
+Do not destroy usability.
+
+============================================================
+31. SEARCH
+============================================================
+
+Create a powerful search bar.
+
+Search by:
+
+No.
+Name
+Gender
+Nationality
+Phone
+City
+Education
+Disability Type
+Cause of Disability
+Amputee / Body Status
+
+Search should be fast.
+
+============================================================
+32. FILTERS
+============================================================
+
+Create filters:
+
+Gender
+Marital Status
+Nationality
+City
+Education
+Disability Type
+Cause of Disability
+Amputee / Body Status
+Hand Side
+Leg Side
+
+Button:
+
+Clear Filters
+
+============================================================
+33. VIEW PERSON
+============================================================
+
+Create a professional person-details view.
+
+Show:
+
+PERSON INFORMATION
+
+No.
+Name
+Gender
+Age
+Marital Status
+Nationality
+Phone
+Address
+City
+Education
+
+DISABILITY INFORMATION
+
+Disability Type
+Cause of Disability
+Amputee / Body Status
+Hand Side
+Leg Side
+
+NOTES
+
+Notes
+
+Buttons:
+
+Edit
+Print
+Close / Back
+
+============================================================
+34. EDIT PERSON
+============================================================
+
+Allow authenticated administrator to edit any record.
+
+When editing:
+
+- Preserve No.
+- Validate fields
+- Save to Firestore
+- Update updatedAt
+- Update updatedBy
+
+Display:
+
+"Record updated successfully."
+
+============================================================
+35. DELETE PERSON
+============================================================
+
+Require confirmation before deletion.
+
+Message:
+
+"Are you sure you want to delete this record?"
+
+Buttons:
+
+Cancel
+Delete
+
+After deletion:
+
+Update dashboard.
+
+Free the registration slot.
+
+============================================================
+36. EXCEL EXPORT
+============================================================
+
+Create:
+
+EXPORT TO EXCEL
+
+The exported Excel must contain exactly:
+
+No.
+Name
+Gender
+Age
+Marital Status
+Nationality
+Phone
+Address
+City
+Education
+Disability Type
+Cause of Disability
+Amputee / Body Status
+Hand Side
+Leg Side
+Notes
+
+Do not add unnecessary fields.
+
+Filename:
+
+Somali_Disability_Data_YYYY-MM-DD.xlsx
+
+Export REAL database records.
+
+============================================================
+37. EXCEL IMPORT
+============================================================
+
+The organization already has historical data in Excel.
+
+Create:
+
+IMPORT EXCEL
+
+The importer must recognize these columns:
+
+No.
+Name
+Gender
+Age
+Marital Status
+Nationality
+Phone
+Address
+City
+Education
+Disability Type
+Cause of Disability
+Amputee / Body Status
+Hand Side
+Leg Side
+Notes
+
+Before importing:
+
+Show preview.
+
+Display:
+
+Total Rows
+Valid Rows
+Invalid Rows
+Duplicate Rows
+
+Do not silently import bad records.
+
+Do not silently overwrite existing records.
+
+Require confirmation.
+
+Respect the 200-record maximum.
+
+If importing would exceed 200:
+
+Show exactly how many records can be imported.
+
+Example:
+
+"Only 15 available slots remain. 20 records were found."
+
+============================================================
+38. EXCEL VALIDATION
+============================================================
+
+Validate dropdown values.
+
+For example:
+
+Gender must be:
+
+Male
+Female
+Other
+
+Do not accept spelling variations silently.
+
+If an Excel file contains:
+
+"Malee"
+
+mark it invalid.
+
+Show which row contains the error.
+
+============================================================
+39. GOOGLE DRIVE BACKUP
+============================================================
+
+Create:
+
+BACKUP & RESTORE
+
+Features:
+
+- Backup Now
+- Export Excel
+- Google Drive Backup
+- Import Excel
+- Restore
+- Backup History
+
+When Google Drive is configured:
+
+1. Read all Firestore records.
+2. Generate Excel backup.
+3. Upload Excel file to Google Drive.
+4. Save backup information.
+5. Show status.
+
+Display:
+
+Last Backup
+Backup Status
+Number of Records
+Backup File Name
+
+IMPORTANT:
+
+Do NOT fake Google Drive backup.
+
+If Google Drive credentials/configuration are missing:
+
+Show:
+
+"Google Drive is not configured."
+
+Clearly identify the configuration required.
+
+============================================================
+40. BACKUP HISTORY
+============================================================
+
+Create:
+
+BACKUP HISTORY
+
+Columns:
+
+Date
+Backup Type
+Number of Records
+File Name
+Status
+
+Examples:
+
+Excel
+Google Drive
+
+Use real backup history.
+
+============================================================
+41. RESTORE
+============================================================
+
+Allow administrator to import a previous Excel backup.
+
+Before restoring:
+
+Show preview.
+
+Warn:
+
+"Restoring data may add or modify records. Please confirm."
+
+Do not silently destroy existing data.
+
+============================================================
+42. SETTINGS
+============================================================
+
+Create:
+
+SETTINGS
+
+Sections:
+
+SYSTEM SETTINGS
+
+System Name:
+Somali Disability Data Entry
+
+Maximum Records:
+200
+
+Theme:
+Light / Dark
+
+ADMIN ACCOUNT
+
+Current Username
+
+Change Username
+
+Change Password
+
+Logout
+
+DATABASE
+
+Connection Status
+
+BACKUP
+
+Google Drive Status
+
+Last Backup
+
+Backup History
+
+============================================================
+43. ADMIN ACCOUNT DATA
+============================================================
+
+Admin profile may contain:
+
+adminId
+username
+authenticationId
+createdAt
+updatedAt
+
+Never store:
+
+password
+plainPassword
+passwordConfirmation
+
+in Firestore.
+
+============================================================
+44. SESSION MANAGEMENT
+============================================================
+
+After successful login:
+
+Admin can access:
+
+Dashboard
+Register Person
+Registered People
+Import / Export
+Backup & Restore
+Settings
+
+After Logout:
+
+all protected pages must redirect to Login.
+
+If user tries to manually access a protected route:
+
+redirect to Login.
+
+Authentication must persist securely across page refresh.
+
+============================================================
+45. ACCESS CONTROL
+============================================================
+
+Protect every administrative route.
+
+Examples:
+
+/dashboard
+/register
+/people
+/import-export
+/backup
+/settings
+
+Unauthenticated users cannot access these pages.
+
+============================================================
+46. RESPONSIVE DESIGN
+============================================================
+
+Desktop:
+
+Use sidebar navigation.
+
+Mobile:
+
+Use mobile menu.
+
+Forms:
+
+Desktop:
+2-column layout where appropriate.
+
+Mobile:
+1-column layout.
+
+Buttons must be touch-friendly.
+
+Tables must be responsive.
+
+============================================================
+47. ACCESSIBILITY
+============================================================
+
+Because this application manages disability information, make
+the interface accessible.
+
+Use:
+
+- Clear labels
+- Good contrast
+- Readable fonts
+- Keyboard navigation
+- Large buttons
+- Clear form validation
+- Accessible dropdowns
+- Accessible dialogs
+
+Do not rely only on color to communicate information.
+
+============================================================
+48. UI DESIGN
+============================================================
+
+Use a professional administrative/government/NGO-style design.
+
+System title:
+
+SOMALI DISABILITY DATA ENTRY
+
+Navigation:
+
+Dashboard
+Register Person
+Registered People
+Import / Export
+Backup & Restore
+Settings
+Logout
+
+Keep the design:
+
+Clean
+Modern
+Professional
+Simple
+Fast
+Accessible
+
+Avoid excessive animations.
+
+Avoid unnecessary decoration.
+
+============================================================
+49. DARK MODE
+============================================================
+
+Support:
+
+Light Mode
+Dark Mode
+
+Remember the selected theme.
+
+============================================================
+50. LOADING STATES
+============================================================
+
+Use loading indicators while:
+
+- Loading records
+- Saving records
+- Updating records
+- Deleting records
+- Importing Excel
+- Exporting Excel
+- Creating backup
+- Uploading to Google Drive
+
+Do not make the UI appear frozen.
+
+============================================================
+51. ERROR HANDLING
+============================================================
+
+Handle:
+
+- Authentication errors
+- Database errors
+- Network errors
+- Invalid Excel files
+- Invalid rows
+- Duplicate records
+- Google Drive errors
+- Permission errors
+- Capacity limit errors
+
+Use understandable messages.
+
+Example:
+
+"Unable to save the record. Please check your connection and try again."
+
+============================================================
+52. TOAST NOTIFICATIONS
+============================================================
+
+Use professional notifications.
+
+Examples:
+
+"Person registered successfully."
+
+"Record updated successfully."
+
+"Record deleted successfully."
+
+"Excel exported successfully."
+
+"Excel imported successfully."
+
+"Backup completed successfully."
+
+"Google Drive backup completed successfully."
+
+"Invalid Excel file."
+
+"Registration capacity reached."
+
+============================================================
+53. EMPTY STATES
+============================================================
+
+If no records exist:
+
+"No people registered yet."
+
+Button:
+
+Register First Person
+
+============================================================
+54. PRINTING
+============================================================
+
+Allow printing an individual person's record.
+
+Print layout:
+
+SOMALI DISABILITY DATA ENTRY
+
+Person Information
+
+Disability Information
+
+Additional Information
+
+Hide:
+
+Sidebar
+Navigation
+Buttons
+Unnecessary UI
+
+when printing.
+
+============================================================
+55. DATA INTEGRITY
+============================================================
+
+This is a data-entry application.
+
+Accuracy is more important than visual effects.
+
+Use dropdowns for predefined categories.
+
+Prevent spelling inconsistencies.
+
+Do not automatically change user-entered information.
+
+============================================================
+56. AUDIT INFORMATION
+============================================================
+
+Store:
+
+createdAt
+updatedAt
+createdBy
+updatedBy
+
+for every person record.
+
+============================================================
+57. NO FAKE FEATURES
+============================================================
+
+CRITICAL:
+
+Do NOT create fake:
+
+- Login
+- Database
+- Records
+- Statistics
+- Excel export
+- Excel import
+- Google Drive backup
+- Restore
+- Authentication
+
+Every button must perform a real operation.
+
+If an external API requires credentials, clearly explain the
+required configuration.
+
+============================================================
+58. DATA PERSISTENCE TEST
+============================================================
+
+Before declaring the project complete, verify:
+
+1. Add a person.
+2. Refresh browser.
+3. Confirm person still exists.
+4. Logout.
+5. Login again.
+6. Confirm person still exists.
+7. Open application from another device/browser.
+8. Confirm database data remains available.
+
+============================================================
+59. CAPACITY TEST
+============================================================
+
+Verify:
+
+1 record
+10 records
+100 records
+199 records
+200 records
+
+At 200:
+
+prevent record 201.
+
+============================================================
+60. SECURITY TEST
+============================================================
+
+Verify:
+
+- Logged-out user cannot access dashboard.
+- Logged-out user cannot access people data.
+- Logged-out user cannot modify records.
+- Password is never stored as plaintext.
+- No credentials are hardcoded.
+- Firestore rules protect the database.
+
+============================================================
+61. EXCEL TEST
+============================================================
+
+Verify:
+
+Export creates a valid .xlsx file.
+
+Import accepts the correct Excel structure.
+
+Invalid rows are identified.
+
+Duplicate records are detected.
+
+Capacity limit is respected.
+
+============================================================
+62. FINAL APPLICATION STRUCTURE
+============================================================
+
+LOGIN
+
+↓
+
+DASHBOARD
+
+↓
+
+REGISTER PERSON
+
+↓
+
+SAVE TO FIRESTORE
+
+↓
+
+REGISTERED PEOPLE
+
+↓
+
+SEARCH / FILTER
+
+↓
+
+VIEW / EDIT / DELETE
+
+↓
+
+IMPORT / EXPORT
+
+↓
+
+BACKUP & RESTORE
+
+↓
+
+SETTINGS
+
+↓
+
+ADMIN ACCOUNT
+
+============================================================
+63. FINAL QUALITY REQUIREMENT
+============================================================
+
+The final application must feel like a real professional
+data-management system that could be used by an organization
+working with disability data.
+
+It must NOT look like a simple AI-generated demo.
+
+Prioritize:
+
+1. Data accuracy
+2. Security
+3. Reliability
+4. Simplicity
+5. Accessibility
+6. Professional UI
+7. Responsive design
+8. Persistent database
+9. Reliable Excel management
+10. Reliable backup
+
+============================================================
+64. FINAL PROJECT NAME
+============================================================
+
+The official application name is:
+
+# SOMALI DISABILITY DATA ENTRY
+
+Use this name throughout the application:
+
+- Login page
+- Dashboard
+- Browser title
+- Navigation
+- Excel filenames
+- Print documents
+- Backup filenames
+
+Build the complete application now.
+
+Do not stop at UI generation.
+
+Implement the actual functionality and make the application
+ready for real-world use.
