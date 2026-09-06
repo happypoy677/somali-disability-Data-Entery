@@ -1,0 +1,1 @@
+{"version":3,"file":"adminSetupInput.d.ts","sourceRoot":"","sources":["../../../src/generated/types/adminSetupInput.ts"],"names":[],"mappings":"AAAA;;;;;;GAMG;AAEH,MAAM,WAAW,eAAe;IAC9B;;;SAGK;IACL,QAAQ,EAAE,MAAM,CAAC;IACjB,mBAAmB;IACnB,QAAQ,EAAE,MAAM,CAAC;IACjB,mBAAmB;IACnB,eAAe,EAAE,MAAM,CAAC;CACzB"}
